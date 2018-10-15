@@ -8,6 +8,12 @@ RUN apt-get -yq update && apt-get -yq upgrade && apt-get -y install apache2 \
 
 COPY docker/apache.conf /etc/apache2/sites-available/site.conf
 
+ADD docker/crontab /etc/cron.d/magento-cron
+
+RUN chmod 0644 /etc/cron.d/magento-cron
+
+RUN touch /var/log/cron.log
+
 RUN openssl genrsa -out /etc/ssl/private/apache.key 2048 && openssl req -new -x509 -key /etc/ssl/private/apache.key -days 365 -sha256 -out /etc/ssl/certs/apache.crt \
     -subj "/C=DE/ST=SA/L=local/O=local/CN=localhost"
 
