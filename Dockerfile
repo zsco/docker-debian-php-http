@@ -11,7 +11,7 @@ RUN echo "deb https://packages.sury.org/php/ stretch main" | sudo tee /etc/apt/s
 
 RUN apt-get -yq update && apt-get -y install \
 	php7.2 php7.2-common php7.2-curl php7.2-mbstring php7.2-gd php7.2-bcmath php7.2-json php7.2-cli  php7.2-redis php7.2-memcached \
-	php7.2-mysql php7.2-imagick php7.2-intl php7.2-xsl php7.2-ctype php7.2-json libapache2-mod-php7.2
+	php7.2-mysql php7.2-imagick php7.2-intl php7.2-xsl php7.2-ctype php7.2-json php7.2-zip libapache2-mod-php7.2
 
 COPY docker/apache.conf /etc/apache2/sites-available/site.conf
 
